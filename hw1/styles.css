@@ -44,6 +44,12 @@ nav {
     max-height: 80%;
     max-width: 80%;
 }
+.preview-image:hover {
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-delay: 0.2s;
+    transform: scale(1.2);
+}
 
 /* food, puipui, shiba_inu */
 .picture {
