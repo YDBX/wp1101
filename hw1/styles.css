@@ -33,10 +33,9 @@ nav {
 
 .preview {
     margin: 3% 3%;
-    border-color: #000000;
-    border-width: 9px;
     text-align: center;
     width: 27%;
+    flex-grow: 1;
 }
 
 .preview-image {
@@ -63,5 +62,7 @@ nav {
 }
 
 .text {
-    margin-bottom: auto;
+    text-align: center;
+    width: 27%;
+    flex-grow: 1;
 }
