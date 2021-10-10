@@ -1,0 +1,67 @@
+body {
+    background-color: #EEEEEE;
+}
+nav {
+    background-color: #FFFFFF;
+    height:3.5em;
+}
+.margin {
+    margin: 0% 20%;
+}
+.pictures-in-nav {
+    height: 50px;
+}
+.home {
+    width: 30%;
+}
+
+.pictures {
+    margin: 0% 15%;
+    text-align: left;
+}
+
+/* index.html */
+.album-margin {
+    margin: 0% 20%;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.preview {
+    margin: 3% 3%;
+    border-color: #000000;
+    border-width: 9px;
+    text-align: center;
+    width: 27%;
+}
+
+.preview-image {
+    border-radius: 32px;
+    text-align: center;
+    max-height: 80%;
+    max-width: 80%;
+}
+
+/* food, puipui, shiba_inu */
+.picture {
+    transition-property: height;
+    transition-duration: 0.5s;
+    transition-delay: 0.2s;
+    margin: 0.5% 0.5%;
+    max-height: 200px;
+}
+
+.picture:hover {
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-delay: 0.2s;
+    transform: scale(1.2);
+}
+
+.text {
+    margin-bottom: auto;
+}
