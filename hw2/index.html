@@ -13,6 +13,68 @@
   />
 </head>
 <body>
+  <nav>
+    <div class="margin">
+      <div id="menu">
+        <img class="pictures-in-nav" src="https://cdn-icons.flaticon.com/png/128/2976/premium/2976215.png?token=exp=1634367789~hmac=5079c6b49c692a72b435fe92c9e63097">
+      </div>
+      <div id="add-album">
+        <img id="add-album-icon" class="pictures-in-nav" src="https://cdn-icons-png.flaticon.com/128/3843/3843488.png">
+      </div>
+      <div id="add-image">
+        <img id="add-image-icon" class="pictures-in-nav" src="https://cdn-icons.flaticon.com/png/128/2360/premium/2360557.png?token=exp=1634379988~hmac=d906ab52f0fd61cb35ae65b7f8f180eb">
+      </div>
+      <div id="trash-can">
+        <img id="trash-can-icon" class="pictures-in-nav" src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png">
+      </div>
+    </div>
+  </nav>
+  <main class="format">
+
+    <div id="albums">
+    </div>
+
+    <div id="all-pictures-container" class="pictures-container">
+      <p id="num-of-picture"></p>
+      <div id="big-picture-container" class="container">
+      </div>
+      <div id="pictures-container" class="pictures">
+      </div>
+    </div>
+    
+    <div id="overlay-1" class="overlay">
+      <div id="overlay-input-1" class="overlay-input">
+        <div class="input">
+          <label class="url-label">album name:</label>
+          <input id="album-name" class="url-input" type="text"><br><br>
+        </div>
+        <div class="input">
+          <label class="url-label">URL:</label>
+          <input id="image-url" value="拜託別放不是照片的url" class="url-input" type="text"><br><br>
+        </div>
+        <button id="check-1">確認</button>
+      </div>
+    </div>
+
+    <div id="overlay-2" class="overlay">
+      <div id="overlay-input-2" class="overlay-input">
+        <div class="input">
+          <label class="url-label">album name:</label>
+          <input id="new-album-name" class="url-input" type="text"><br><br>
+        </div>
+        <button id="check-2">確認</button>
+      </div>
+    </div>
+
+    <div id="overlay-3" class="overlay">
+      <div id="overlay-input-3" class="overlay-input">
+        <button id="button-3">刪除此照片</button>
+        <button id="button-4">刪除此相簿</button>
+        <!-- <button id="button-5">取消</button> -->
+      </div>
+    </div>
+  </main>
+
   <script src="main.js"></script>
 </body>
 </html>
