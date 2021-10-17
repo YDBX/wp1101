@@ -78,6 +78,7 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
+    cursor: pointer;
 }
 .album-picture-container {
     width: 30%;
@@ -102,8 +103,10 @@ nav {
 
 .container {
     margin: 0 15%;
+    background-color: #000000;
     text-align: center;
 }
+
 .big-picture {
     margin: 2% 0;
     max-width: 100%;
@@ -153,11 +156,39 @@ nav {
     align-items: center;
 }
 
+#overlay-input-3 {
+    margin: 10% 30%;
+    width: 30%;
+    height: 40%;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .input {
     flex-grow: 1;
-    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
 }
 
 .url-label {
+    flex-grow: 1;
     text-align: end;
+}
+
+.url-input {
+    flex-grow: 1;
+    height: 18px;
+}
+
+.button {
+    /* flex-grow: 1; */
+    text-align: center;
+}
+
+.button-2 {
+    flex-grow: 1;
+    text-align: center;
 }

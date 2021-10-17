@@ -31,100 +31,134 @@ let cat_album = ["https://images.pexels.com/photos/1170986/pexels-photo-1170986.
                     "https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"];
 
 let albums = [food_album, shiba_inu_album, cat_album, []];
-let album_names = ["food", "shiba inu", "cat", "blank"];
+let album_names = ["food", "shiba inu", "cat", "empty"];
 
 function reload_pictures(album){
 
-    // remove and reload pictures
-    let pictures_container = document.getElementById("pictures-container");
-    while (pictures_container.firstChild){
-        pictures_container.removeChild(pictures_container.firstChild);
-    }
-    for (let i = 0; i < album.length; i++){
-        let div = document.createElement("div");
-        div.setAttribute("class", "picture-container");
+    if (album.length !== 0){
+
+        // remove and reload pictures
+        let pictures_container = document.getElementById("pictures-container");
+        while (pictures_container.firstChild){
+            pictures_container.removeChild(pictures_container.firstChild);
+        }
+        for (let i = 0; i < album.length; i++){
+            let div = document.createElement("div");
+            div.setAttribute("class", "picture-container");
+            let img = document.createElement("img");
+            img.setAttribute("id", i.toString());
+            img.setAttribute("class", "picture")
+            img.setAttribute("src", album[i]);
+            div.appendChild(img);
+            pictures_container.appendChild(div);
+        }
+
+        // remove big picture
+        const big_picture_container = document.getElementById("big-picture-container");
+        while (big_picture_container.firstChild){
+            big_picture_container.removeChild(big_picture_container.firstChild);
+        }
+
+        let pic_mouseover;
+        let pic_array = [];
+        for (let i = 0; i < album.length; i++)
+            pic_array.push(i.toString());
+
+        // add images
         let img = document.createElement("img");
-        img.setAttribute("id", i.toString());
-        img.setAttribute("class", "picture")
-        img.setAttribute("src", album[i]);
-        div.appendChild(img);
-        pictures_container.appendChild(div);
-    }
-
-    // show big picture
-    const big_picture_container = document.getElementById("big-picture-container");
-    while (big_picture_container.firstChild){
-        big_picture_container.removeChild(big_picture_container.firstChild);
-    }
-
-    let pic_mouseover;
-    let pic_array = [];
-    for (let i = 0; i < album.length; i++)
-        pic_array.push(i.toString());
-
-    // add image
-    let img = document.createElement("img");
-    img.setAttribute("id", "big-picture");
-    img.setAttribute("class", "big-picture");
-    img.setAttribute("src", album[0]);
-    big_picture_container.appendChild(img);
-
-    let num_of_picture = document.getElementById("num-of-picture");
-    num_of_picture.innerHTML = "1 of " + pic_array.length.toString();
-    
-    // add style
-    const big_pic = document.getElementById("big-picture");
-    let def_big_pic_style = document.getElementById("0").style;
-    def_big_pic_style.border = "8px solid";
-    def_big_pic_style.borderImage = "linear-gradient(to bottom, rgba(107, 0, 128, 0.521), rgba(255, 17, 0, 0.616)) 1";
-
-    pic_array.forEach(i => {
-        document.getElementById(i).addEventListener("click", () => {
-            pic_array.forEach(i =>{
-                pic_style = document.getElementById(i).style;
-                pic_style.border = "";
-                pic_style.borderImage = "";
-            })
-            let pic_click = document.getElementById(i);
-            big_pic_id = i;
-            big_pic.src = album[parseInt(i, 10)];
-            pic_click.style.border = "8px solid";
-            pic_click.style.borderImage = "linear-gradient(to bottom, rgba(107, 0, 128, 0.521), rgba(255, 17, 0, 0.616)) 1";
-
-            let num_of_picture = document.getElementById("num-of-picture");
-            num_of_picture.innerHTML = (parseInt(i) + 1).toString() + " of " + pic_array.length.toString();
-        });
+        img.setAttribute("id", "big-picture");
+        img.setAttribute("class", "big-picture");
+        img.setAttribute("src", album[0]);
+        big_picture_container.appendChild(img);
         
-        document.getElementById(i).addEventListener("mouseover", () => {
-            pic_array.forEach(i =>{
-                pic_style = document.getElementById(i).style;
-                pic_style.transition = "";
-                pic_style.transform = "";
-            })
-            let pic_hover = document.getElementById(i);
-            pic_hover.style.transition = "transform 0.5s 0.2s";
-            pic_hover.style.transform = "scale(1.2)";
-            pic_mouseover = i;
-        });
-    
-        document.getElementById(i).addEventListener("mouseout", () => {
-            if (pic_mouseover === i){
+        // count number of picture (default)
+        let num_of_picture = document.getElementById("num-of-picture");
+        num_of_picture.innerHTML = "1 of " + pic_array.length.toString();
+        
+        // add style
+        const big_pic = document.getElementById("big-picture");
+        let def_big_pic_style = document.getElementById("0").style;
+        def_big_pic_style.border = "8px solid";
+        def_big_pic_style.borderImage = "linear-gradient(to bottom, rgba(107, 0, 128, 0.521), rgba(255, 17, 0, 0.616)) 1";
+
+        pic_array.forEach(i => {
+            document.getElementById(i).addEventListener("click", () => {
+                pic_array.forEach(i =>{
+                    pic_style = document.getElementById(i).style;
+                    pic_style.border = "";
+                    pic_style.borderImage = "";
+                })
+                let pic_click = document.getElementById(i);
+                big_pic_id = i;
+                big_pic.src = album[parseInt(i, 10)];
+                pic_click.style.border = "8px solid";
+                pic_click.style.borderImage = "linear-gradient(to bottom, rgba(107, 0, 128, 0.521), rgba(255, 17, 0, 0.616)) 1";
+
+                let num_of_picture = document.getElementById("num-of-picture");
+                num_of_picture.innerHTML = (parseInt(i) + 1).toString() + " of " + pic_array.length.toString();
+            });
+            
+            document.getElementById(i).addEventListener("mouseover", () => {
+                pic_array.forEach(i =>{
+                    pic_style = document.getElementById(i).style;
+                    pic_style.transition = "";
+                    pic_style.transform = "";
+                })
                 let pic_hover = document.getElementById(i);
                 pic_hover.style.transition = "transform 0.5s 0.2s";
-                pic_hover.style.transform = "scale(1.0)";
-            }
+                pic_hover.style.transform = "scale(1.2)";
+                pic_mouseover = i;
+            });
+        
+            document.getElementById(i).addEventListener("mouseout", () => {
+                if (pic_mouseover === i){
+                    let pic_hover = document.getElementById(i);
+                    pic_hover.style.transition = "transform 0.5s 0.2s";
+                    pic_hover.style.transform = "scale(1.0)";
+                }
+            });
         });
-    });
+    }
+    else {
+        // remove pictures
+        let pictures_container = document.getElementById("pictures-container");
+        while (pictures_container.firstChild){
+            pictures_container.removeChild(pictures_container.firstChild);
+        }
+        pictures_container.style.overflow = "visible";
+
+        // remove big picture
+        const big_picture_container = document.getElementById("big-picture-container");
+        while (big_picture_container.firstChild){
+            big_picture_container.removeChild(big_picture_container.firstChild);
+        }
+
+        // remove count of image
+        let num_of_picture = document.getElementById("num-of-picture");
+        num_of_picture.innerHTML = "";
+
+        // add text
+        let h2 = document.createElement("h2");
+        h2.innerHTML = "This is an empty album.";
+        pictures_container.appendChild(h2);
+    }
+    
 }
 
 let album_choose = album_names[0];
 
 function reload_albums(album_names, albums, last_album_choose="food"){
+
+    // remove albums
     let albums_element = document.getElementById("albums");
     while (albums_element.firstChild){
         albums_element.removeChild(albums_element.firstChild);
     }
+
+    // count number of images
     let sum_images = 0;
+
+    // show albums
     for (let i = 0; i < album_names.length; i++){
         sum_images += albums[i].length;
         let a_1 = document.createElement("div");
@@ -154,10 +188,13 @@ function reload_albums(album_names, albums, last_album_choose="food"){
         a_1.appendChild(a_5);
         albums_element.appendChild(a_1);
     }
+
+    // show number of images
     let p = document.createElement("p");
     p.innerHTML = "共" + sum_images + "張";
     albums_element.appendChild(p);
 
+    // add style to show which album is chosed
     album_choose = last_album_choose;
     let def_album = document.getElementById(album_choose);
     def_album.style.backgroundColor = "cornsilk";
@@ -167,12 +204,12 @@ function reload_albums(album_names, albums, last_album_choose="food"){
             let index  = album_names.findIndex((value) => name === value);
             album_names.forEach(name => {
                 
-                if (albums[index].length !== 0)
-                {
+                // if (albums[index].length !== 0)
+                // {
                     album_style = document.getElementById(name).style;
                     album_style.backgroundColor = "";
                     album_style.borderBlockStyle = "";
-                }
+                // }
             });
 
             if (albums[index].length !== 0){
@@ -183,8 +220,13 @@ function reload_albums(album_names, albums, last_album_choose="food"){
                 // reload pictures
                 reload_pictures(albums[index])
             }
-            else{
-                alert("This is a blank album.");
+            else {
+                album_choose = name;
+                let album_click = document.getElementById(name);
+                album_click.style.backgroundColor = "cornsilk";
+                album_click.style.borderBlockStyle = "ridge";
+                // reload pictures
+                reload_pictures(albums[index])
             }
         }); 
     });
@@ -196,23 +238,6 @@ reload_albums(album_names, albums);
 // render pictures
 let album_index = album_names.findIndex((value) => album_choose === value);
 reload_pictures(albums[album_index]);
-
-// let menu = document.getElementById("menu");
-// let show = true;
-// menu.addEventListener("click", () => {
-//     if (show){
-//         while(albums_element.firstChild){
-//             albums_element.removeChild(albums_element.firstChild);
-//         }
-//         albums_element.style.maxWidth = "0%";
-//         let all_pictures_container = document.getElementById("all-pictures-container");
-//         all_pictures_container.style.maxWidth = "100%";
-//         pictures_container.style.margin = "0% 20%";
-//     }
-//     else {
-        
-//     }
-// });
 
 let check_1 = document.getElementById("check-1");
 let check_2 = document.getElementById("check-2");
@@ -309,18 +334,16 @@ trash_can.addEventListener("click", () => {
 });
 overlay_input_3.addEventListener("mouseover", () => {
     out_click_input_3 = false;
-    // console.log(out_click_input_3);
 });
 overlay_input_3.addEventListener("mouseout", () => {
     out_click_input_3 = true;
-    // console.log(out_click_input_3);
 });
 overlay_3.addEventListener("click", () => {
-    // if (out_click_input_3){
-    overlay_3.style.display = "none";
-        // out_click_input_3 = false;
-    // }
+    if (out_click_input_3){
+        overlay_3.style.display = "none";
+    }
 });
+
 // delete picture
 let button_3 = document.getElementById("button-3");
 button_3.addEventListener("click", () => {
@@ -332,6 +355,7 @@ button_3.addEventListener("click", () => {
     reload_pictures(albums[index]);
 });
 
+// delete album
 let button_4 = document.getElementById("button-4");
 button_4.addEventListener("click", () => {
     let index = album_names.findIndex((value) => album_choose == value);
@@ -346,19 +370,7 @@ button_4.addEventListener("click", () => {
         reload_albums(album_names, albums, album_names[index]);
         reload_pictures(albums[index]);
     }
+    else {
+        alert("再刪就沒相簿了!!!");
+    }
 });
-
-// let button_5 = document.getElementById("button-5");
-// button_5.addEventListener("click", () => {
-//     let overlay_3 = document.getElementById("overlay-3");
-//     overlay_3.style.display = "none";
-//     out_click_input_3 = false;
-//     console.log(out_click_input_3);
-// });
-
-// render number of picture
-// let big_pic = document.getElementById("big-picture");
-// let index = album_names.findIndex((value) => album_choose == value);
-// let pic_index = albums[index].findIndex((value) => big_pic.src == value);
-// let num_of_picture = getElementById("num-of-picture");
-// num_of_picture.innerHTML = pic_index.toString() + " of " + albums[index].length.toString();
