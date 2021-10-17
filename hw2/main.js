@@ -7,7 +7,13 @@ let food_album = ["https://images.pexels.com/photos/357573/pexels-photo-357573.j
                     "https://images.pexels.com/photos/4393021/pexels-photo-4393021.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     "https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     "https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-                    "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",];
+                    "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    "https://images.pexels.com/photos/1998635/pexels-photo-1998635.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    "https://images.pexels.com/photos/3044/restaurant-love-romantic-dinner.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    "https://images.pexels.com/photos/5589033/pexels-photo-5589033.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    "https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    "https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"];
 let shiba_inu_album = ["https://images.pexels.com/photos/5731805/pexels-photo-5731805.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", 
                         "https://images.pexels.com/photos/5749135/pexels-photo-5749135.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", 
                         "https://images.pexels.com/photos/4056462/pexels-photo-4056462.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -18,7 +24,10 @@ let shiba_inu_album = ["https://images.pexels.com/photos/5731805/pexels-photo-57
                         "https://images.pexels.com/photos/4056472/pexels-photo-4056472.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                         "https://images.pexels.com/photos/6589077/pexels-photo-6589077.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                         "https://images.pexels.com/photos/4588051/pexels-photo-4588051.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-                        "https://images.pexels.com/photos/4588012/pexels-photo-4588012.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"];
+                        "https://images.pexels.com/photos/4588012/pexels-photo-4588012.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                        "https://images.pexels.com/photos/4056463/pexels-photo-4056463.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                        "https://images.pexels.com/photos/6589159/pexels-photo-6589159.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                        "https://images.pexels.com/photos/5998700/pexels-photo-5998700.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"];
 let cat_album = ["https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", 
                     "https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     "https://images.pexels.com/photos/156934/pexels-photo-156934.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -28,7 +37,12 @@ let cat_album = ["https://images.pexels.com/photos/1170986/pexels-photo-1170986.
                     "https://images.pexels.com/photos/5004611/pexels-photo-5004611.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                     "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-                    "https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"];
+                    "https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    "https://images.pexels.com/photos/4734723/pexels-photo-4734723.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    "https://images.pexels.com/photos/2113368/pexels-photo-2113368.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    "https://images.pexels.com/photos/4347501/pexels-photo-4347501.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    "https://images.pexels.com/photos/5233032/pexels-photo-5233032.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                    "https://images.pexels.com/photos/6258162/pexels-photo-6258162.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"];
 
 let albums = [food_album, shiba_inu_album, cat_album, []];
 let album_names = ["food", "shiba inu", "cat", "empty"];
@@ -52,6 +66,7 @@ function reload_pictures(album){
             div.appendChild(img);
             pictures_container.appendChild(div);
         }
+        pictures_container.style.overflow = "scroll";
 
         // remove big picture
         const big_picture_container = document.getElementById("big-picture-container");
