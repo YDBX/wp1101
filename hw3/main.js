@@ -22,19 +22,28 @@ function clean_button() {
 
             // addeventlistener button
             button.addEventListener("click", () => {
-                let ul = document.getElementById("todo-list");
-                let first_li = ul.firstChild;
-                while (first_li){
-                    let tmp = first_li.nextElementSibling;
-                    if (first_li.firstChild.firstChild.checked) {
-                        let index = todos.findIndex((element) => element === first_li.firstChild.nextElementSibling.innerHTML);
-                        todos.splice(index, 1);
-                        complete.splice(index, 1);
-                        first_li.remove()
+                let del_index = [];
+                for (i in complete) {
+                    if (complete[i]){
+                        del_index.push(i);
                     }
-                    first_li = tmp;
                 }
+                del_index = del_index.reverse();
+                for (index of del_index){
+                    todos.splice(index, 1);
+                    complete.splice(index, 1);
+                }
+
+                // complete = [];
+                // for (i in todos) {
+                //     complete.push(false);
+                // }
+                reload_ul();
                 clean_button();
+                if (todos.length === 0) {
+                    let footer = document.getElementById("todo-footer");
+                    footer.remove();
+                }
             });
         }
     }
