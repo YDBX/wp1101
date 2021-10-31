@@ -1,96 +1,85 @@
 import Item from './item.js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { render } from 'react-dom';
 
 let change_type;
 let remove_completed_list;
 
 const List = (props) => {
-    // console.log('inlist');
+    // console.log('list');
     const [todos, setTodos] = useState(props.todos);
     const [complete, setComplete] = useState(props.complete);
-    // let todos = props.todos;
-    // let complete = props.complete;
     const handleclick = props.handleclick;
     const [type, setType] = useState('All');
     
-    const remove_List = (index) => {
-        props.remove_main(index);
-        let todo_tmp = todos;
-        let complete_tmp = complete;
-        todo_tmp.splice(index, 1);
-        complete.splice(index, 1);
-        setTodos(todo_tmp);
-        setComplete(complete_tmp);
-    }
-
-    remove_completed_list = () => {
-        let new_todo = [];
-        let new_complete = [];
-        for (let i in complete){
-            if (!complete[i]) {
-                new_todo.push(todos[i]);
-                new_complete.push(false);
-            }
-        }
-        setTodos(new_todo);
-        setComplete(new_complete);
-        console.log(new_complete);
-        console.log(new_todo);
-        setComplete(complete.filter((e) => e === false));
+    const remove_List = (todo) => {
+        props.remove_main(todo);
+        setTodos(todos);
+        setComplete(complete);
+        console.log(todos);
         console.log(complete);
     }
     
     change_type = (t) => {
-        // console.log(t)
         setType(t);
+    }
+
+    remove_completed_list = () => {
+        // setType("Clear Completed");
+        // setTodos(todos);
+        // setComplete(complete);
         console.log(complete);
-        // console.log(t);
-    }
-    let listItems;
-    if (type === 'All'){
-        listItems = todos.map((todo) => {
-            let index = todos.findIndex((element) => element === todo);
-            return (
-                <Item todo={todo} complete={complete[index]} handleclick={handleclick} index={index} remove={remove_List}/>
-            )
-        });    
+        console.log(todos);
     }
 
-    else if (type === "Active"){
-        listItems = todos.map((todo) => {
-            let index = todos.findIndex((element) => element === todo);
-            if (!complete[index]) {
-                return (
-                    <Item todo={todo} complete={complete[index]} handleclick={handleclick} index={index} remove={remove_List}/>
-                )
-            }
-            else {
-                return null;
-            }
-        });
-    }
-
-    else if (type === "Completed"){
-        listItems = todos.map((todo) => {
-            let index = todos.findIndex((element) => element === todo);
-            if (complete[index]) {
-                return (
-                    <Item todo={todo} complete={complete[index]} handleclick={handleclick} index={index} remove={remove_List}/>
-                )
-            }
-            else {
-                return null;
-            }
-        });
-    }
-    
+    useEffect(() => {
+        setTodos(props.todos);
+        setComplete(props.complete);
+        // console.log(123);
+    }, [props]);
     
     return (
         <ul className="todo-app__list" id="todo-list">
-            {listItems}
+            { (type === 'All') ? (
+                todos.map((todo) => {
+                    // console.log(todo);
+                    let index = todos.findIndex((element) => element === todo);
+                    return (
+                        <Item todo={todo} complete={complete[index]} handleclick={handleclick} index={index} remove={remove_List} style={complete[index] ? {textDecoration: 'line-through', 'opacity': '0.5'} : {textDecoration: 'none'}} checked={complete[index] ? true:false}/>
+                    )
+                }
+            )) : ((type === 'Active' || type === 'Clear Completed') ? (
+                    todos.map((todo) => {
+                        let index = todos.findIndex((element) => element === todo);
+                        console.log(todo);
+                        console.log(index);
+                        console.log(complete[index]);
+                        if (!complete[index]) {
+                            return (
+                                <Item todo={todo} complete={complete[index]} handleclick={handleclick} index={index} remove={remove_List} style={complete[index] ? {textDecoration: 'line-through', 'opacity': '0.5'} : {textDecoration: 'none'}} checked={complete[index] ? true:false}/>
+                            )
+                        }
+                        else {
+                            return null;
+                        }
+                    }
+                )) : (todos.map((todo) => {
+                        let index = todos.findIndex((element) => element === todo);
+                        if (complete[index]) {
+                            return (
+                                <Item todo={todo} complete={complete[index]} handleclick={handleclick} index={index} remove={remove_List} style={complete[index] ? {textDecoration: 'line-through', 'opacity': '0.5'} : {textDecoration: 'none'}} checked={complete[index] ? true:false}/>
+                            )
+                        }
+                        else {
+                            return null;
+                        }
+                    }
+                )
+            ))
+            }
         </ul>
     )
 };
 
 export default List;
-export { change_type , remove_completed_list};
+export { change_type, remove_completed_list };
