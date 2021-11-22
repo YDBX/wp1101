@@ -11,13 +11,11 @@ const router = express.Router()
 
 router.post('/start', (_, res) => {
     genNumber();
-    console.log('generate a random number');
     res.json({msg: 'The game has started.'})
 })
 
 router.get('/guess', (req, res) => {
     const number = getNumber();
-    console.log(number);
     const guessed = roughScale(req.query.number, 10)
     if (!guessed || guessed < 1 || guessed > 100) {
         res.status(406).send({msg: 'Not a legal number.'})
