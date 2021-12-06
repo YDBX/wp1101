@@ -18,6 +18,13 @@ mongoose.connect(process.env.MONGO_URL, {
 .then((res) => console.log("mongo db connection created"))
 const db = mongoose.connection
 
+const broadMessage = (data, status) => {
+    wss.clients.forEach((client) => {
+        sendData(data, client);
+        sendStatus(status, client);
+    });
+}
+
 db.once('open', () => {
     wss.on('connection', (ws) => {
         initData(ws);
@@ -36,17 +43,18 @@ db.once('open', () => {
                         throw new Error("Message DB save error: " + e);
                     }
                     // Sent to client
-                    sendData(["output", [payload]], ws);
-                    sendStatus({
-                        type: 'success',
-                        msg: 'Message sent.'
-                    }, ws)
+                    // sendData(["output", [payload]], ws);
+                    // sendStatus({
+                    //     type: 'success',
+                    //     msg: 'Message sent.'
+                    // }, ws)
+                    // Broadcast
+                    broadMessage(data, {type: 'success', msg: 'Message sent.'})
                     break
                 }
                 case 'clear' : {
                     Message.deleteMany({}, () => {
-                        sendData(["cleared"], ws)
-                        sendStatus({type: 'info', msg: "Message cache cleared."}, ws);
+                        broadMessage(['cleared'], {type: 'info', msg: 'Message cache cleared'})
                     })
                     break;
                 }
