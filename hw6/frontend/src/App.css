@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.player_guess {
+  color: blue;
+}
+.machine_guess {
+  color: red;
+}

@@ -3,8 +3,12 @@ import './App.css';
 import { guess, startGame, restartGame } from './axios';
 
 function App() {
+  const [playerMsgs, setPlayerMsgs] = useState([]);
+  const [machineMsgs, setMachineMsgs] = useState([]);
+  
   const [hasStarted, setHasStarted] = useState(false);
   const [hasWon, setHasWon] = useState(false);
+  const [machinehHasWon, setMachineHasWon] = useState(false);
   const [number, setNumber] = useState('');
   const [status, setStatus] = useState('');
 
@@ -15,16 +19,27 @@ function App() {
   }
 
   const handleGuess = async () => {
-    const response = await guess(number);
-    if (response === 'Equal') setHasWon(true);
-    else if (response === 'Not legal') {
-      setStatus(number.toString() + ' is not a valid number (1 - 100)');
+    const {player_msg, machine_msg} = await guess(number);
+    if (player_msg === 'Not legal') {
+      setStatus(number.toString() + ' is not valid');
       setNumber('');
     }
     else {
-      setStatus(response)
+      setPlayerMsgs([...playerMsgs, number, player_msg]);
+      setMachineMsgs([...machineMsgs, machine_msg.machine_guess_number, machine_msg.machine_guess_status]);
       setNumber('');
     }
+    if (player_msg === '4A0B') {
+      setHasWon(true);
+      setStatus('You win!');
+      setNumber('');
+    }
+    else if (machine_msg.machine_guess_status === '4A0B') {
+      setMachineHasWon(true);
+      setStatus('You lose!');
+      setNumber('');
+    }
+    
   }
 
   const restart = async () => {
@@ -32,26 +47,38 @@ function App() {
     console.log(response);
     setHasStarted(true);
     setHasWon(false);
+    setMachineHasWon(false);
+    setPlayerMsgs([]);
+    setMachineMsgs([]);
     setNumber('');
     setStatus('');
   }
 
   const startMenu = 
   <div>
+    <h1>1A1B</h1>
     <button onClick={start}
     >start game</button>
   </div>
 
   const gameMode = 
   <>
-    <p>Guess a number between 1 to 100</p>
+    <p>Guess a four-digit number (every digit is from 0 to 9)</p>
     <input value={number}  onChange={(e) => setNumber(e.target.value)}
     ></input>
     <button
       onClick={handleGuess}
       disabled={!number}
     >guess!</button>
-    <p>{status}</p>
+    <div className="player_guess">{playerMsgs.map((value) => 
+      <p>{value}</p>
+    )}</div>
+    <div className="machine_guess">{machineMsgs.map((value) => 
+      <p>{value}</p>
+    )}</div>
+    <div>
+      <p>{status}</p>
+    </div>
   </>
 
   const winningMode = 
