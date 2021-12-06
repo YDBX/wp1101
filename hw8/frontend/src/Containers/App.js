@@ -18,7 +18,6 @@ const Wrapper = styled.div`
 const LOCALSTORAGE_KEY = "save-me";
 const App = () => {
   const savedMe = localStorage.getItem(LOCALSTORAGE_KEY)
-  console.log(savedMe);
   const { status, messages, sendMessage, clearMessages } = useChat();
   const [signedIn, setSignedIn] = useState(false);
   const [me, setMe] = useState(savedMe || '');
