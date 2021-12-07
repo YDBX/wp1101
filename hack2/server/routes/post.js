@@ -19,9 +19,7 @@ router.get('/allPosts', async (req, res) => {
 router.get('/postDetail', async(req, res) => {
     try {
         const postId = req.query.pid;
-        console.log(postId);
         const post = await Post.findOne({ postId: postId });
-        console.log(post);
         res.status(200).send({ message: "success", post: post })
     } catch {
         res.status(403).send({ message: "error", post: null })
@@ -37,10 +35,9 @@ router.post('/newPost', async (req, res) => {
     try {
         const newPost = new Post({ postId: postId, title: title, content: content, timestamp: timestamp  })
         newPost.save();
-        console.log("Create new post", newPost);
-        res.status(200).send({ message: 'success' });
+        res.status(200).send({ message: 'success', data: newPost });
     } catch {
-        res.status(403).send({ message: 'error' });
+        res.status(403).send({ message: 'error', data: null });
     }
 });
 

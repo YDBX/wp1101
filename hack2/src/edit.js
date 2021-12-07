@@ -15,7 +15,7 @@ function Edit(props) {
     setContent(() => content.trim())
     const postId = uuidv4().toString();
     const timestamp = new Date();
-    const { data: { message } } = await instance.post('/newPost', { postId, title, content, timestamp });
+    const { data: { message, data } } = await instance.post('/newPost', { postId, title, content, timestamp });
 
     setTimeout(() => {
       props.navigate(-1);
