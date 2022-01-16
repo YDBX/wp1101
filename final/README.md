@@ -4,6 +4,7 @@
 
 ## 環境設置與套件安裝
 1. 在clone/pull下來的wp1101/final資料夾輸入以下指令以完成環境設置
+
 cd frontend
 yarn install
 cd ../backend
