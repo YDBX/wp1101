@@ -1,0 +1,12 @@
+{
+  "name": "Web_Programming_Final",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd frontend && yarn start",
+    "server": "cd backend && yarn server"
+  },
+  "repository": "https://github.com/YDBX/Web_Programming_Final.git",
+  "author": "YDBX <barry26653@gmail.com>",
+  "license": "MIT"
+}

@@ -1,0 +1,176 @@
+*{
+  font-family:Monospace;
+}
+body {
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    Monospace;
+}
+
+.Layout {
+  height: 8vh;
+  background-color: rgb(207, 57, 57);
+  width:100%;
+}
+
+.Signing{
+  /* background-color: black; */
+  width:100%;
+  height: 8vh;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+
+  justify-items: center;
+}
+.Signing :nth-of-type(1).ButtonBox{
+  flex:1;
+  height:8vh;
+  display:flex;
+  flex-flow:row;
+  align-items: center;
+}
+.Signing :nth-of-type(2).ButtonBox{
+  flex:1;
+  height:8vh;
+  display:flex;
+  flex-flow:row;
+  margin-left:29%;
+}
+.Signing :first-child div{
+  overflow:hidden;
+  font-size:1.5em;
+  height:100%;
+
+  margin-left: 5%;
+
+}
+.Signing :first-child Button{
+  flex:1;
+  font-size:2em;
+  height:80%;
+  margin-right:60%;
+  margin-left: 5%;
+  align-self:center;
+  justify-self: flex-start;
+}
+.Signing :nth-child(2) Button{
+  flex:1;
+  font-size:2em;
+  height:80%;
+  margin-right:5%;
+  margin-left: 0;
+  align-self:center;
+  justify-self: flex-start;
+}
+/* .Signing Button{
+  font-size:2em;
+  width:100%;
+  height:100%;
+  flex: 1;
+  margin:5%;
+} */
+
+.BigBox{
+  overflow:auto;
+  padding:5%;
+  height:45vh;
+  width: 100%;
+  align-items:center;
+  display:flex;
+  flex-flow: column;
+  margin-top:2em;
+  margin-bottom: 2em;
+  border: groove 1em rgb(255, 126, 126);
+  border-radius: 2em;
+}
+
+.BigBox_signIn{
+  overflow:auto;
+  padding:5%;
+  height:50vh;
+  width: 50%;
+  align-items:center;
+  display:flex;
+  flex-flow: column;
+  margin-top:2em;
+  margin-bottom: 2em;
+  border: groove 1em rgb(255, 126, 126);
+  border-radius: 2em;
+}
+.BigBox_signIn Button{
+  height:2em;
+  font-size:1.5em;
+}
+/* Input.Password {
+  font-size:2em;
+} */
+
+.BigBox *{
+  flex:1;
+  width:100%;
+  
+}
+
+/* 
+.InputBox {
+  font-size:2em;
+  flex: 1.7;
+  display:flex;
+  flex-flow:column;
+  justify-content: space-evenly;
+} */
+.UserInput {
+  display:flex;
+  flex-flow:column;
+  height:100%;
+  
+  justify-content: flex-end;
+}
+.UserInput .input{
+  flex:2;
+  margin-bottom:1%;
+}
+.UserInput .ButtonWrapper{
+  font-family:Monospace;
+  flex:1;
+  display:flex;
+  flex-flow: row;
+  /* justify-content:space-around; */
+}
+.UserInput .ButtonWrapper .button{
+  /* width:25%; */
+  font-size:1.5em;
+  margin:1%;
+  height:2em;
+}
+
+.signIn {
+  display:flex;
+  flex-flow: column wrap;
+  align-content: center;
+  border: groove 1em rgb(255, 126, 126);
+  border-radius: 2em;
+}
+
+
+.input {
+  font-size:1.5em;
+  font-family:Monospace;
+}
+
+Table{
+  font-size:1.3em;
+}
+
+.BigBox Button{
+  font-size: 1.5em;
+}
