@@ -6,8 +6,11 @@
 1. 在clone/pull下來的wp1101/final資料夾輸入以下指令以完成環境設置
 
 cd frontend
+
 yarn install
+
 cd ../backend
+
 yarn install
 
 2. 在./backend資料夾中根據.env.defaults的格式加入.env檔，並輸入可使用之MONGO_URL
